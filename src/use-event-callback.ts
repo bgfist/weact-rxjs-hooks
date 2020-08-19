@@ -1,5 +1,5 @@
-import { useEffect, useState, useCallback } from 'react'
-import useConstant from 'use-constant'
+import { useEffect, useState } from '@bgfist/weact'
+import useConstant from './use-constant'
 import { Observable, BehaviorSubject, Subject } from 'rxjs'
 
 import { RestrictArray, VoidAsNull, Not } from './type'
@@ -51,10 +51,9 @@ export function useEventCallback<EventValue, State = void, Inputs = void>(
     () => new BehaviorSubject<RestrictArray<Inputs> | null>(typeof inputs === 'undefined' ? null : inputs),
   )
 
-  function eventCallback(e: EventValue) {
+  function returnedCallback(e: EventValue) {
     return event$.next(e)
   }
-  const returnedCallback = useCallback(eventCallback, [])
 
   useEffect(() => {
     inputs$.next(inputs!)

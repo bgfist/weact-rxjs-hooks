@@ -1,6 +1,6 @@
 import { Observable, BehaviorSubject } from 'rxjs'
 import { useState, useEffect } from 'react'
-import useConstant from 'use-constant'
+import useConstant from './use-constant'
 
 import { RestrictArray } from './type'
 
